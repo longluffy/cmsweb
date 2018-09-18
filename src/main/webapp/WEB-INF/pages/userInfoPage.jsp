@@ -1,3 +1,5 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -34,71 +36,98 @@
 <body>
 	<jsp:include page="_menu.jsp" />
 
-
-	<section class="ftco-section">
-		< div class="container">
-
-		<div class="row">
-			<div class="col-md-12 ftco-animate">
-				<div class="table-responsive">
-					<table class="table">
-						<thead class="thead-primary">
-							<tr>
-								<th>TLD</th>
-								<th>Duration</th>
-								<th>Registration</th>
-								<th>Renewal</th>
-								<th>Transfer</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>.com</td>
-								<td>1 Year</td>
-								<td>$70.00</td>
-								<td>$5.00</td>
-								<td>$5.00</td>
-							</tr>
-							<tr>
-								<td>.net</td>
-								<td>1 Year</td>
-								<td>$75.00</td>
-								<td>$5.00</td>
-								<td>$5.00</td>
-							</tr>
-							<tr>
-								<td>.org</td>
-								<td>1 Year</td>
-								<td>$65.00</td>
-								<td>$5.00</td>
-								<td>$5.00</td>
-							</tr>
-							<tr>
-								<td>.biz</td>
-								<td>1 Year</td>
-								<td>$60.00</td>
-								<td>$5.00</td>
-								<td>$5.00</td>
-							</tr>
-							<tr>
-								<td>.info</td>
-								<td>1 Year</td>
-								<td>$50.00</td>
-								<td>$5.00</td>
-								<td>$5.00</td>
-							</tr>
-							<tr>
-								<td>.me</td>
-								<td>1 Year</td>
-								<td>$45.00</td>
-								<td>$5.00</td>
-								<td>$5.00</td>
-							</tr>
-						</tbody>
-					</table>
+	<div class="hero-wrap">
+		<div class="overlay"></div>
+		<div class="circle-bg"></div>
+		<div class="circle-bg-2"></div>
+		<div class="container-fluid">
+			<div
+				class="row no-gutters d-flex slider-text align-items-center justify-content-center"
+				data-scrollax-parent="true">
+				<div class="col-md-6 ftco-animate text-center"
+					data-scrollax=" properties: { translateY: '70%' }">
+					<p class="breadcrumbs"
+						data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
+						<span class="mr-2"><a
+							href="${pageContext.request.contextPath}/welcome">Home</a></span> <span>User
+							Info</span>
+					</p>
+					<h1 class="mb-3 bread"
+						data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">${username}</h1>
 				</div>
 			</div>
 		</div>
+	</div>
+
+	<section class="ftco-section bg-light">
+		<div class="container">
+			<div class="row justify-content-center mb-5">
+				<div class="col-md-7 text-center heading-section ftco-animate">
+					<h2 class="mb-4">Upload số điện thoại cần gạch cước</h2>
+					<p>Upload file excel đã điền thông tin theo mẫu, có thể tải
+						file mẫu tại đây</p>
+				</div>
+			</div>
+
+			<div class="row justify-content-center">
+				<div class="col-md-10 ftco-animate">
+					<form id="upload-form" class="domain-form upload-box" enctype="multipart/form-data">
+						<div class="form-group d-md-flex">
+							<input type="file" name="file" id="file" class="custom-file upload-box"> <br> 
+							<input type="submit" id="upload-button" class="btn btn-primary px-5" value="Upload">
+						</div>
+						<span id="upload-error" class="error"></span> <span
+							id="upload-result" class="mb-4"></span>
+					</form>
+
+					<p class="domain-price text-center">
+						<span><small>Đại lý cấp 1</small> 21%</span> <span><small>Đại
+								lý cấp 2</small> 18%</span>
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<section class="ftco-section">
+		<div class="container">
+
+			<div class="row justify-content-center mb-5">
+				<div class="col-md-7 text-center heading-section ftco-animate">
+					<h2 class="mb-4">Danh sách số gạch cước</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 ftco-animate">
+					<div class="table-responsive">
+						<table class="table">
+							<thead class="thead-primary">
+								<tr>
+									<th>ID</th>
+									<th>Serial</th>
+									<th>Thời gian nhận</th>
+									<th>Trạng thái thẻ</th>
+									<th>Kết quả nạp</th>
+									<th>edit</th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach items="${listcard}" var="cardinfo">
+									<tr>
+										<td>${cardinfo.id}</td>
+										<td>${cardinfo.serial}</td>
+										<td>${cardinfo.receivetime}</td>
+										<td>${cardinfo.cardcheckresult}</td>
+										<td>${cardinfo.cardprocessresult}</td>
+										<td><a href="<c:url value='/edit/${cardinfo.id}' />">Edit</a></td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
 		</div>
 	</section>
 
@@ -107,7 +136,7 @@
 	<!-- END slider -->
 
 
- 
+
 
 	<!-- loader -->
 	<div id="ftco-loader" class="show fullscreen">
@@ -118,7 +147,8 @@
 				stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
 	</div>
 
-
+	<script src="jquery.js"></script>
+	<script src="jquery.form.js"></script>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/jquery-migrate-3.0.1.min.js"></script>
 	<script src="js/popper.min.js"></script>
@@ -133,10 +163,26 @@
 	<script src="js/bootstrap-datepicker.js"></script>
 	<script src="js/jquery.timepicker.min.js"></script>
 	<script src="js/scrollax.min.js"></script>
-	<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-	<script src="js/google-map.js"></script>
 	<script src="js/main.js"></script>
 
+	<script>
+		$(document).ready(function() {
+			$("#upload-form").submit(function() {
+				$.ajax({
+					url : '/uploadFile',
+					type : "post",
+					data : $('form#upload-form').serialize(),
+					success : function(msg) {
+						alert(msg);
+						$("#upload-result").text(msg);
+					},
+					error : function(msg) {
+						alert("File upload Failed");
+						$("#upload-error").text(msg);
+					}
+				});
+			});
+		});
+	</script>
 </body>
 </html>

@@ -3,6 +3,7 @@ package org.cardLL.cmsweb.authentication;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.cardLL.cmsweb.dao.CardProcessDAO;
 import org.cardLL.cmsweb.dao.UserInfoDAO;
 import org.cardLL.cmsweb.model.UserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ public class MyUserDetailsService implements UserDetailsService {
  
     @Autowired
     private UserInfoDAO userInfoDAO;
- 
+     
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         UserInfo userInfo = userInfoDAO.findUserInfo(username);

@@ -50,10 +50,12 @@
 					data-scrollax=" properties: { translateY: '70%' }">
 					<p class="breadcrumbs"
 						data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
-						<span class="mr-2"><a href="index.html">Home</a></span> <span>Domain</span>
+						<span class="mr-2"><a href="index.html">Home</a></span> <span>Đăng
+							nhập</span>
 					</p>
 					<h1 class="mb-3 bread"
-						data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Domain</h1>
+						data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Đăng
+						nhập</h1>
 				</div>
 			</div>
 		</div>
@@ -63,9 +65,10 @@
 		<div class="container">
 			<div class="row justify-content-center mb-5">
 				<div class="col-md-7 text-center heading-section ftco-animate">
-					<span class="subheading">Get domain</span>
-					<h2 class="mb-4">Get A Domain Name</h2>
-					<p>With FREE Email, DNS, Theft Protection, and other features</p>
+					<span class="subheading">ĐĂNG NHẬP</span>
+					<h2 class="mb-4">Đăng nhập vào hệ thống</h2>
+					<p>Cung cấp các giải pháp và dịch vụ thanh toán trực tuyến tại
+						Việt Nam</p>
 				</div>
 			</div>
 			<div class="row justify-content-center">
@@ -82,8 +85,8 @@
 							<td><input type='password' name='password' /></td>
 						</tr>
 						<tr>
-							<td><input class="navbar-toggler" name="submit"
-								type="submit" value="submit" /></td>
+							<td><input class="navbar-toggler btn btn-primary px-5"
+								name="submit" type="submit" value="submit" /></td>
 						</tr>
 					</table>
 				</form>
@@ -92,93 +95,22 @@
 				<div class="col-md-10 ftco-animate">
 
 					<p class="domain-price text-center">
-						<span><small>.com</small> 9.75</span> <span><small>.net</small>
-							9.90</span> <span><small>.biz</small> $8.95</span> <span><small>.me</small>
-							$7.95</span>
+						<span><small>Đại lý cấp 1</small> 21%</span> <span><small>Đại
+								lý cấp 2</small> 18%</span>
 					</p>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<section class="ftco-section">
-		<div class="container">
-			<div class="row justify-content-center mb-5">
-				<div class="col-md-7 text-center heading-section ftco-animate">
-					<span class="subheading">Pricing Plans</span>
-					<h2 class="mb-4">Domain Pricing</h2>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12 ftco-animate">
-					<div class="table-responsive">
-						<table class="table">
-							<thead class="thead-primary">
-								<tr>
-									<th>TLD</th>
-									<th>Duration</th>
-									<th>Registration</th>
-									<th>Renewal</th>
-									<th>Transfer</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>.com</td>
-									<td>1 Year</td>
-									<td>$70.00</td>
-									<td>$5.00</td>
-									<td>$5.00</td>
-								</tr>
-								<tr>
-									<td>.net</td>
-									<td>1 Year</td>
-									<td>$75.00</td>
-									<td>$5.00</td>
-									<td>$5.00</td>
-								</tr>
-								<tr>
-									<td>.org</td>
-									<td>1 Year</td>
-									<td>$65.00</td>
-									<td>$5.00</td>
-									<td>$5.00</td>
-								</tr>
-								<tr>
-									<td>.biz</td>
-									<td>1 Year</td>
-									<td>$60.00</td>
-									<td>$5.00</td>
-									<td>$5.00</td>
-								</tr>
-								<tr>
-									<td>.info</td>
-									<td>1 Year</td>
-									<td>$50.00</td>
-									<td>$5.00</td>
-									<td>$5.00</td>
-								</tr>
-								<tr>
-									<td>.me</td>
-									<td>1 Year</td>
-									<td>$45.00</td>
-									<td>$5.00</td>
-									<td>$5.00</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
 
-	<section class="ftco-section bg-light">
+
+	<section class="ftco-section ">
 		<div class="container">
 			<div class="row justify-content-center mb-5">
 				<div class="col-md-7 text-center heading-section ftco-animate">
-					<span class="subheading">Facts</span>
-					<h2 class="mb-4">Your Question</h2>
+					<span class="subheading">Đôi điều về chúng tôi</span>
+					<h2 class="mb-4">Các câu hỏi thường gặp</h2>
 				</div>
 			</div>
 			<div class="row">
@@ -189,20 +121,24 @@
 								<div class="card">
 									<div class="card-header">
 										<a class="card-link" data-toggle="collapse" href="#menuone"
-											aria-expanded="true" aria-controls="menuone">What is your
-											domain name? <span class="collapsed"><i
-												class="icon-plus-circle"></i></span><span class="expanded"><i
-												class="icon-minus-circle"></i></span>
+											aria-expanded="true" aria-controls="menuone">Cổng thanh
+											toán trực tuyến (thecaotructuyen.vn) là gì? <span
+											class="collapsed"><i class="icon-plus-circle"></i></span><span
+											class="expanded"><i class="icon-minus-circle"></i></span>
 										</a>
 									</div>
 									<div id="menuone" class="collapse show">
 										<div class="card-body">
-											<p>When she reached the first hills of the Italic
-												Mountains, she had a last view back on the skyline of her
-												hometown Bookmarksgrove, the headline of Alphabet Village
-												and the subline of her own road, the Line Lane. Pityful a
-												rethoric question ran over her cheek, then she continued her
-												way.</p>
+											<p>Là cổng thanh toán trực tuyến cung cấp cho khách hàng
+												các giải pháp và dịch vụ thanh toán tại Việt Nam. Các dịch
+												vụ cổng THANH TOÁN TRỰC TUYẾN cung cấp: - Thanh toán tiền
+												cho các thuê bao trả trước, trả sau của Viettel - Thanh toán
+												cước thuê bao: FTTH, D-com, PSTN, ADSL, NextTV…của Viettel -
+												Thanh toán cước phần mềm giáo dục của Viettel: Smas.edu.vn -
+												Nạp tiền cho các gói cước: V90, V50… của Viettel - Thanh
+												toán cước thuê bao truyền hình K+ - Cung cấp giải pháp thanh
+												toán bằng thẻ cào điện thoại cho các cổng thanh toán trực
+												tuyến… B</p>
 										</div>
 									</div>
 								</div>
@@ -210,20 +146,23 @@
 								<div class="card">
 									<div class="card-header">
 										<a class="card-link" data-toggle="collapse" href="#menutwo"
-											aria-expanded="false" aria-controls="menutwo">How long is
-											my domain name valid? <span class="collapsed"><i
+											aria-expanded="false" aria-controls="menutwo"> Tại sao
+											phải thanh toán qua cổng này, các lợi ích của cổng thanh
+											toán? <span class="collapsed"><i
 												class="icon-plus-circle"></i></span><span class="expanded"><i
 												class="icon-minus-circle"></i></span>
 										</a>
 									</div>
 									<div id="menutwo" class="collapse">
 										<div class="card-body">
-											<p>When she reached the first hills of the Italic
-												Mountains, she had a last view back on the skyline of her
-												hometown Bookmarksgrove, the headline of Alphabet Village
-												and the subline of her own road, the Line Lane. Pityful a
-												rethoric question ran over her cheek, then she continued her
-												way.</p>
+											<p>- Chính sách chiết khấu cao (cụ thể xem quy định chính
+												sách đại lý) - Việc ứng dụng CNTT và phần mềm trên APP giúp
+												cho việc thanh toán được tiền lợi, nhanh chóng, mọi lúc mọi
+												nơi. - Dữ liệu thuê bao, các gói cước…được đưa lên hệ thống
+												sẽ tự động gạch hàng tháng, không cần bổ sung nhiều lần -
+												Kiểm soát được tiến độ gạch cước, chi phí phải trả nhà mạng
+												và cổng than toán - Gạch trước trả tiền sau cho CỔNG THANH
+												TOÁN TRỰC TUYẾN</p>
 										</div>
 									</div>
 								</div>
@@ -231,20 +170,26 @@
 								<div class="card">
 									<div class="card-header">
 										<a class="card-link" data-toggle="collapse" href="#menu3"
-											aria-expanded="false" aria-controls="menu3">Can I sell my
-											domain name? <span class="collapsed"><i
+											aria-expanded="false" aria-controls="menu3">Cách thức
+											thực hiện như thế nào? <span class="collapsed"><i
 												class="icon-plus-circle"></i></span><span class="expanded"><i
 												class="icon-minus-circle"></i></span>
 										</a>
 									</div>
 									<div id="menu3" class="collapse">
 										<div class="card-body">
-											<p>When she reached the first hills of the Italic
-												Mountains, she had a last view back on the skyline of her
-												hometown Bookmarksgrove, the headline of Alphabet Village
-												and the subline of her own road, the Line Lane. Pityful a
-												rethoric question ran over her cheek, then she continued her
-												way.</p>
+											<p>- Bước 1: Liên hệ với Quản trị viên hệ thông để được
+												mở tải khoản trên hệ thống - Bước 2: Đăng nhập vào
+												website:THECAOTRUCTUYEN.VN đăng nhập vào tài khoản (trong
+												trường hợp quên mật khẩu, liên hệ lại quản trị viên hệ
+												thống). - Bước 3: Tải file mẫu về nhập danh sách thuê bao
+												cần gạch cước hoặc nhập trực tiếp thuê bao cần gạch cước vào
+												hệ thống và ghi số tiền cần gạch vào hệ thống theo hướng
+												dẫn. - Bước 4: Kiểm tra xem tiến độ gạch cước của các thuê
+												bao nhập lên hệ thống, thanh toán tiền cước đã được gạch cho
+												hệ thống vào ngày N+ 1. Người dung có thể xuất báo cáo kiểm
+												tra số tiền đã được nạp, số tiền chưa nạp… của tải khoản của
+												mình bất cứ lúc nào trong ngày.</p>
 										</div>
 									</div>
 								</div>
@@ -254,20 +199,21 @@
 								<div class="card">
 									<div class="card-header">
 										<a class="card-link" data-toggle="collapse" href="#menu4"
-											aria-expanded="false" aria-controls="menu4">Can I cancel
-											a domain? <span class="collapsed"><i
+											aria-expanded="false" aria-controls="menu4">Một số vướng
+											mắc khi triển khai? <span class="collapsed"><i
 												class="icon-plus-circle"></i></span><span class="expanded"><i
 												class="icon-minus-circle"></i></span>
 										</a>
 									</div>
 									<div id="menu4" class="collapse">
 										<div class="card-body">
-											<p>When she reached the first hills of the Italic
-												Mountains, she had a last view back on the skyline of her
-												hometown Bookmarksgrove, the headline of Alphabet Village
-												and the subline of her own road, the Line Lane. Pityful a
-												rethoric question ran over her cheek, then she continued her
-												way.</p>
+											<p>- Do hệ thống không gạch cước lẻ theo nhu cầu thực tế
+												được do vậy người dung phải nhập số tiền thanh toán thấp
+												nhất 50k và chẵn chia hết được cho 50. - Hệ thống sẽ chủ
+												động nạp cước trong ngày cho người dùng nếu hệ thống thông
+												quá tải…do vậy việc thanh toán sẽ mất một chút time. Mọi
+												thông tin chi tiết xin vui long liên hệ với quản trị hệ
+												thống.</p>
 										</div>
 									</div>
 								</div>
@@ -275,8 +221,8 @@
 								<div class="card">
 									<div class="card-header">
 										<a class="card-link" data-toggle="collapse" href="#menu5"
-											aria-expanded="false" aria-controls="menu5">How do I
-											transfer a domain name? <span class="collapsed"><i
+											aria-expanded="false" aria-controls="menu5">Lộ trình
+											thanh toán <span class="collapsed"><i
 												class="icon-plus-circle"></i></span><span class="expanded"><i
 												class="icon-minus-circle"></i></span>
 										</a>
@@ -296,8 +242,8 @@
 								<div class="card">
 									<div class="card-header">
 										<a class="card-link" data-toggle="collapse" href="#menu6"
-											aria-expanded="false" aria-controls="menu6">How do I
-											setup URL forwarding? <span class="collapsed"><i
+											aria-expanded="false" aria-controls="menu6">Thông tin
+											liên hệ<span class="collapsed"><i
 												class="icon-plus-circle"></i></span><span class="expanded"><i
 												class="icon-minus-circle"></i></span>
 										</a>
@@ -327,11 +273,10 @@
 			<div class="row mb-5">
 				<div class="col-md">
 					<div class="ftco-footer-widget mb-4">
-						<h2 class="ftco-heading-2">Raptor.</h2>
-						<p>Far far away, behind the word mountains, far from the
-							countries Vokalia and Consonantia, there live the blind texts.</p>
+						<h2 class="ftco-heading-2">Thẻ Cào Trực Tuyến</h2>
+						<p>Cung cấp cho khách hàng các giải pháp và dịch vụ thanh toán trực tuyến tại Việt Nam</p>
 						<p class="mt-4">
-							<a href="#" class="btn btn-primary p-3">Get in touch</a>
+							<a href="#" class="btn btn-primary p-3">Liên hệ chúng tôi</a>
 						</p>
 					</div>
 				</div>
@@ -366,12 +311,11 @@
 						<div class="block-23 mb-3">
 							<ul>
 								<li><span class="icon icon-map-marker"></span><span
-									class="text">203 Fake St. Mountain View, San Francisco,
-										California, USA</span></li>
+									class="text">B205 Valencia Garden , CT19B Việt Hưng</span></li>
 								<li><a href="#"><span class="icon icon-phone"></span><span
-										class="text">+2 392 3929 210</span></a></li>
+										class="text">+84 39 334 0991</span></a></li>
 								<li><a href="#"><span class="icon icon-envelope"></span><span
-										class="text">info@yourdomain.com</span></a></li>
+										class="text">kinhdoanh@thecaotructuyen.vn</span></a></li>
 								<li><span class="icon icon-clock-o"></span><span
 									class="text">Saturday &mdash; Sunday 8:00am - 5:00pm</span></li>
 							</ul>
