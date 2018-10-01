@@ -8409,7 +8409,7 @@ textarea.form-control {
     left: 0;
     bottom: 0;
     right: 0;
-    content: '';
+/*     content: ''; */
     z-index: -1;
     opacity: .9;
     background: #2ebdc4;

@@ -47,5 +47,9 @@ public class MyUserDetailsService implements UserDetailsService {
  
         return userDetails;
     }
+    
+    public UserInfo findUserByUserName(String userName) {
+    	return userInfoDAO.findUserInfo(userName);
+    }
      
 }

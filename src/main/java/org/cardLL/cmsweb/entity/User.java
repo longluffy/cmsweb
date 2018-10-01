@@ -11,10 +11,10 @@ public class User {
  
     private String username;
     private String password;
-    private boolean enabled;
+    private int enabled;
     private String displayname;
     private String sub_of;
-    
+    private long balance;
     
     @Id
     @Column(name = "username", length = 50, nullable = false)
@@ -35,18 +35,20 @@ public class User {
         this.password = password;
     }
  
-    @Column(name = "enabled", nullable = false)
-    public boolean isEnabled() {
-        return enabled;
-    }
- 
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
-    }
+   
 
     @Column(name = "displayname", nullable = true)
 	public String getDisplayname() {
 		return displayname;
+	}
+
+    @Column(name = "enabled", nullable = false)
+	public int getEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(int enabled) {
+		this.enabled = enabled;
 	}
 
 	public void setDisplayname(String displayname) {
@@ -61,7 +63,17 @@ public class User {
 	public void setSub_of(String sub_of) {
 		this.sub_of = sub_of;
 	}
-    
+
+	public long getBalance() {
+		return balance;
+	}
+
+	public void setBalance(long balance) {
+		this.balance = balance;
+	}
+
+
+	
     
  
 }
