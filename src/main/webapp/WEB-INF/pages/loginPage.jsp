@@ -38,9 +38,24 @@
 		<div class="overlay"></div>
 		<div class="circle-bg"></div>
 		<div class="circle-bg-2"></div>
-		
-		<div class="container-fluid">
 
+		<div class="container-fluid">
+			<div
+				class="row no-gutters d-flex slider-text align-items-center justify-content-center"
+				data-scrollax-parent="true">
+				<div class="col-md-6 ftco-animate text-center"
+					data-scrollax=" properties: { translateY: '70%' }">
+					<p class="breadcrumbs"
+						data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
+						<span class="mr-2"><a
+							href="${pageContext.request.contextPath}/welcome">Home</a></span> <span>User
+							Info</span>
+					</p>
+
+
+
+				</div>
+			</div>
 		</div>
 	</div>
 	<section class="ftco-section">
@@ -98,6 +113,5 @@
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 	<script src="js/google-map.js"></script>
 	<script src="js/main.js"></script>
-
 </body>
 </html>

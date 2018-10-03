@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.cardLL.cmsweb.dao.CardProcessDAO;
 import org.cardLL.cmsweb.entity.CardProcess;
+import org.cardLL.cmsweb.entity.ChargeAccount;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,6 +23,16 @@ public class CardProcessService {
 	public List<CardProcess> getChargeListForAccountId(int id) {
 		// TODO Auto-generated method stub
 		return cardProcessDAO.getChargeListForAccountId(id);
+	}
+	
+	public List<CardProcess> getChargeListByProviderName(int id) {
+		// TODO Auto-generated method stub
+		return cardProcessDAO.getChargeListForAccountId(id);
+	}
+
+	public List<CardProcess> getChargeListByUserAdded(String username) {
+		// TODO Auto-generated method stub
+		return cardProcessDAO.getChargeListByUserAdded(username);
 	}
 
 }

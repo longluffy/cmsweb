@@ -1,12 +1,15 @@
 package org.cardLL.cmsweb.config;
 
+import org.cardLL.cmsweb.authentication.MySimpleUrlAuthenticationSuccessHandler;
 import org.cardLL.cmsweb.authentication.MyUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.transaction.annotation.Transactional;
 
 @Configuration
@@ -16,7 +19,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private MyUserDetailsService myUserDetailsService;
+	
 
+    @Bean
+    public AuthenticationSuccessHandler myAuthenticationSuccessHandler(){
+        return new MySimpleUrlAuthenticationSuccessHandler();
+    }
+	
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 
@@ -40,10 +49,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 		// Trang /userInfo yêu cầu phải login với vai trò USER hoặc ADMIN.
 		// Nếu chưa login, nó sẽ redirect tới trang /login.
-		http.authorizeRequests().antMatchers("/userInfo").access("hasAnyRole('USER', 'ADMIN','PROVIDER')");
+		http.authorizeRequests().antMatchers("/userInfo").access("hasAnyRole('USER', 'ADMIN')");
 
 		// Trang chỉ dành cho ADMIN
 		http.authorizeRequests().antMatchers("/admin").access("hasRole('ADMIN')");
+
+		// Trang chỉ dành cho ADMIN
+		http.authorizeRequests().antMatchers("/providerPage").access("hasAnyRole('ADMIN','PROVIDER')");
 
 		// Khi người dùng đã login, với vai trò XX.
 		// Nhưng truy cập vào trang yêu cầu vai trò YY,
@@ -56,7 +68,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				// Submit URL của trang login
 				.loginProcessingUrl("/j_spring_security_check") // Submit URL
 				.loginPage("/login")//
-				.defaultSuccessUrl("/userInfo")//
+				//.defaultSuccessUrl("/userInfo")//
+	            .successHandler(myAuthenticationSuccessHandler())
 				.failureUrl("/login?error=true")//
 				.usernameParameter("username")//
 				.passwordParameter("password")

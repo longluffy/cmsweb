@@ -58,8 +58,8 @@ public class CardProcess implements Serializable {
 	@Column(name = "chargedby")
 	String chargedby;
 	
-	@Column(name = "user_aded")
-	String user_aded;
+	@Column(name = "user_added")
+	String user_added;
 	
 	
 	
@@ -73,12 +73,13 @@ public class CardProcess implements Serializable {
 		this.chargedby = chargedby;
 	}
 
-	public String getUser_aded() {
-		return user_aded;
+
+	public String getUser_added() {
+		return user_added;
 	}
 
-	public void setUser_aded(String user_aded) {
-		this.user_aded = user_aded;
+	public void setUser_added(String user_added) {
+		this.user_added = user_added;
 	}
 
 	public String getSrc_msg() {
@@ -160,6 +161,7 @@ public class CardProcess implements Serializable {
 	public void setCardprocesssuccess(int cardprocesssuccess) {
 		this.cardprocesssuccess = cardprocesssuccess;
 	}
+
 
 	public String getCardprocessresult() {
 		return cardprocessresult;

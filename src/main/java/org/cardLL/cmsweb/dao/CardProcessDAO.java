@@ -43,8 +43,6 @@ public class CardProcessDAO {
 
 	}
 
-
-
 	public List<CardProcess> getChargeListForAccountId(int id) {
 		// TODO Auto-generated method stub
 		try {
@@ -53,6 +51,25 @@ public class CardProcessDAO {
 			Criteria cr = session.createCriteria(CardProcess.class);
 			cr.add(Restrictions.eq("cardprocesssuccess", 1));
 			cr.add(Restrictions.eq("chargedto", String.valueOf(id)));
+			cr.addOrder(Order.desc("chargedtime"));
+			List<CardProcess> result = cr.list();
+
+			return result;
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public List<CardProcess> getChargeListByUserAdded(String username) {
+		try {
+
+			Session session = sessionFactory.getCurrentSession();
+			Criteria cr = session.createCriteria(CardProcess.class);
+//			cr.add(Restrictions.eq("cardprocesssuccess", 1));
+			cr.add(Restrictions.eq("user_added", username));
 			cr.addOrder(Order.desc("chargedtime"));
 			List<CardProcess> result = cr.list();
 

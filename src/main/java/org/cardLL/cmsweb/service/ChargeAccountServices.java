@@ -46,7 +46,7 @@ public class ChargeAccountServices {
 		return chargeAccountDAO.updateChargeAccount(ca);
 	}
 	
-	private ChargeAccount getChargeAccountById(int id) {
+	public ChargeAccount getChargeAccountById(int id) {
 		
 		return chargeAccountDAO.getChargeAccountById(id);
 	}

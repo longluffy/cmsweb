@@ -125,39 +125,11 @@
 			<div class="row">
 				<div class="col-md-12 ftco-animate">
 					<div class="table-responsive">
-						<!-- 						<table class="table"> -->
-						<!-- 							<thead class="thead-primary"> -->
-						<!-- 								<tr> -->
-						<!-- 									<th>ID</th> -->
-						<!-- 									<th>Tài khoản</th> -->
-						<!-- 									<th>Ngày thêm</th> -->
-						<!-- 									<th>Lượng tiền yêu cầu nạp</th> -->
-						<!-- 									<th>Đã nạp</th> -->
-						<!-- 									<th>Còn lại</th> -->
-						<!-- 																		<th>edit</th> -->
-						<!-- 								</tr> -->
-						<!-- 							</thead> -->
-						<!-- 							<tbody> -->
-						<%-- 								<c:forEach items="${AccountList}" var="account"> --%>
-						<!-- 									<tr> -->
-						<%-- 										<td>${account.id}</td> --%>
-						<!-- 										<td><a -->
-						<%-- 											href="${pageContext.request.contextPath}/chargedetail_${account.id}"> --%>
-						<%-- 												${account.phonenumber}</a></td> --%>
-						<%-- 										<td>${account.date}</td> --%>
-						<%-- 										<td>${account.amount}</td> --%>
-						<%-- 										<td>${account.chargedamount}</td> --%>
-						<%-- 										<td>${account.leftamount}</td> --%>
-						<%-- 																				<td><a href="<c:url value='/edit/${account.id}' />">Edit</a></td> --%>
-						<!-- 									</tr> -->
-						<%-- 								</c:forEach> --%>
-						<!-- 							</tbody> -->
-						<!-- 						</table> -->
-
+						
 						<table id="example" class="display" width="100%" cellspacing="0">
 							<thead>
 								<tr>
-									<th></th>
+									<th>Chọn</th>
 									<th>Tài khoản</th>
 									<th>Ngày</th>
 									<th>Đăng ký</th>
@@ -287,24 +259,7 @@
 
 
 	<script>
-		// 		
-		//$(document).ready(function() {
-		// 			$("#upload-form").submit(function() {
-		// 				$.ajax({
-		// 					url : '/uploadFile',
-		// 					type : "post",
-		// 					dataType : "text/plain",
-		// 					data : $('form#upload-form').serialize(),
-		// 					success : function(msg) {
-		// 						alert("file upload success");
-		// 					},
-		// 					error : function(msg) {
-		// 						console.log(error)
-		// 					}
-		// 				});
-		// 			});
-		// 		});
-
+		
 		var editor; // use a global for the submit and return data rendering in the examples
 
 		$(document)
@@ -317,24 +272,32 @@
 										table : "#example",
 										idSrc : 'id',
 										fields : [ {
-											label : "Account",
+											label : "Tài Khoản",
 											name : "phonenumber"
 										}, {
-											label : "Date",
-											name : "date",
-											type : "datetime"
-										}, {
-											label : "amount:",
+											label : "Lượng Tiền",
 											name : "amount"
-										}, {
-											label : "chargedamount:",
-											name : "chargedamount"
-										}, {
-											label : "leftamount:",
-											name : "leftamount"
-										} ]
+										}]
 									});
 
+							editorSmas = new $.fn.dataTable.Editor(
+									{
+										ajax : "${pageContext.request.contextPath}/addSMASAccount ",
+										table : "#example",
+										idSrc : 'id',
+										fields : [ {
+											label : "Tài Khoản",
+											name : "phonenumber"
+										},{
+											label : "Mật khẩu",
+											name : "password",
+											type : "password"
+										}, {
+											label : "Lượng Tiền",
+											name : "amount"
+										}]
+									});
+							
 							// Activate an inline edit on click of a table cell
 							$('#example').on('click', 'tbody td.editable',
 									function(e) {
@@ -355,8 +318,23 @@
 													if (!phone.isMultiValue()) {
 														if (!phone.val()) {
 															phone
-																	.error('A phone  must be given');
+																	.error('bạn phải nhập tài khoản');
 														}
+
+													}
+
+													var amount = this
+													.field('amount');
+
+													if (!amount.isMultiValue()) {
+														if (!amount.val()) {
+															amount
+																	.error('bạn phải nhập số tiền ');
+														}
+// 														if (amount % 50000 != 0) {
+// 																amount
+// 																	.error('bạn phải nhập số tiền là bội số của 50.000'+ (amount % 50000));
+// 														}
 
 														if (phone.val().length >= 14) {
 															phone
@@ -372,7 +350,12 @@
 													}
 												}
 											});
-
+							//log
+							editor.on('error', function(e, json, data) {
+							    table.cells('#' + data.DT_RowId, '').every(function() {
+							      $(this.node()).attr('title', this.data());
+							    })
+							});
 							$('#example')
 									.DataTable(
 											{
@@ -432,6 +415,11 @@
 															text : 'Thêm tài khoản'
 														},
 														{
+															extend : "create",
+															editor : editorSmas,
+															text : 'Thêm tài khoản SMAS'
+														},
+														{
 															extend : "edit",
 															editor : editor,
 															text : 'Chỉnh sửa'
@@ -439,7 +427,7 @@
 														},
 														{
 															extend : 'collection',
-															text : 'Export',
+															text : 'Xuất file',
 															buttons : [ 'copy',
 																	'excel',
 																	'csv',

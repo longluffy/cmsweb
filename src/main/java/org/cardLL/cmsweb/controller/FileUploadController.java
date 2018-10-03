@@ -10,8 +10,6 @@ import java.math.BigInteger;
 import java.nio.file.Files;
 import java.security.Principal;
 import java.sql.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
@@ -29,7 +27,8 @@ import org.cardLL.cmsweb.dao.UserInfoDAO;
 import org.cardLL.cmsweb.entity.CardProcess;
 import org.cardLL.cmsweb.entity.ChargeAccount;
 import org.cardLL.cmsweb.entity.UserDocument;
-import org.cardLL.cmsweb.model.TableResponse;
+import org.cardLL.cmsweb.model.TableResponseCardList;
+import org.cardLL.cmsweb.model.TableResponseChargeAcc;
 import org.cardLL.cmsweb.service.CardProcessService;
 import org.cardLL.cmsweb.service.ChargeAccountServices;
 import org.cardLL.cmsweb.service.UserDocumentService;
@@ -245,7 +244,7 @@ public class FileUploadController {
 
 		List<ChargeAccount> accList = chargeAccountServices.getListChargeAccountByUserName(userName);
 
-		TableResponse res = new TableResponse();
+		TableResponseChargeAcc res = new TableResponseChargeAcc();
 		for (ChargeAccount chargeAccount : accList) {
 			res.setTotalAmount(res.getTotalAmount() + chargeAccount.getAmount().longValue());
 			res.setTotalCharged(res.getTotalCharged() + chargeAccount.getChargedamount().longValue());
@@ -266,6 +265,79 @@ public class FileUploadController {
 	@RequestMapping(value = { "/getCardList" }, method = RequestMethod.POST)
 	public void getcardlist1(HttpServletRequest request, HttpServletResponse response, Model model, Principal principal)
 			throws IOException {
+		String userName = principal.getName();
+		String action = request.getParameter("action");
+		String id = "";
+		Map<String, String[]> parm = request.getParameterMap();
+		ChargeAccount acc = new ChargeAccount();
+		acc.setUseradded(userName);
+		for (String key : parm.keySet()) {
+			if (key.equalsIgnoreCase("action")) {
+				continue;
+			}
+			if (id.isEmpty()) {
+				id = key.substring(key.indexOf("[") + 1, key.indexOf("]"));
+			}
+			System.out.println(key);
+			String propname = key.substring(key.indexOf("[", 6) + 1, key.lastIndexOf("]"));
+
+			switch (propname) {
+			case "phonenumber":
+				acc.setPhonenumber(request.getParameter(key));
+				break;
+
+			case "amount":
+				acc.setAmount(BigInteger.valueOf(Long.valueOf(request.getParameter(key))));
+				break;
+
+			default:
+				break;
+			}
+		}
+
+		Gson gson = new Gson();
+		PrintWriter out = response.getWriter();
+
+		if (acc.getAmount().mod(BigInteger.valueOf(50000)) != BigInteger.valueOf(0)) {
+			response.sendError(422, "invalid_amount");
+			return;
+		}
+
+		if ("create".equalsIgnoreCase(action)) {
+			// create new charge account
+			Calendar currenttime = Calendar.getInstance();
+			Date sqldate = new Date((currenttime.getTime()).getTime());
+			acc.setDate(sqldate);
+
+			acc = chargeAccountServices.createChargeAccount(acc);
+		} else {
+			// update old account
+			ChargeAccount exist = chargeAccountServices.getChargeAccountById(Integer.valueOf(id));
+
+			if (exist.getChargedamount().compareTo(acc.getAmount()) < 0) {
+				response.sendError(422, "invalid_amount");
+			} else {
+				exist.setAmount(acc.getAmount());
+				acc = chargeAccountServices.updateChargeAccount(exist);
+
+			}
+		}
+
+		List<ChargeAccount> accList = new ArrayList<ChargeAccount>();
+		accList.add(acc);
+
+		TableResponseChargeAcc res = new TableResponseChargeAcc();
+		res.setData(accList);
+		response.setContentType("application/json");
+
+		String json = gson.toJson(res);
+		out.print(json);
+		out.flush();
+	}
+
+	@RequestMapping(value = { "/addSMASAccount" }, method = RequestMethod.POST)
+	public void addSMASAccount(HttpServletRequest request, HttpServletResponse response, Model model,
+			Principal principal) throws IOException {
 		String userName = principal.getName();
 		String action = request.getParameter("action");
 		String id = "";
@@ -317,7 +389,28 @@ public class FileUploadController {
 		List<ChargeAccount> accList = new ArrayList<ChargeAccount>();
 		accList.add(acc);
 
-		TableResponse res = new TableResponse();
+		TableResponseChargeAcc res = new TableResponseChargeAcc();
+		res.setData(accList);
+		response.setContentType("application/json");
+
+		Gson gson = new Gson();
+
+		String json = gson.toJson(res);
+		PrintWriter out = response.getWriter();
+		out.print(json);
+		out.flush();
+	}
+
+	@RequestMapping(value = { "/getCardListByProvider" }, method = RequestMethod.GET)
+	public void getCardListByProvider(HttpServletResponse response, Model model, Principal principal)
+			throws IOException {
+		// UserDocument document = userDocumentService.findById(docId);
+		String userName = principal.getName();
+
+		List<CardProcess> accList = cardProcessService.getChargeListByUserAdded(userName);
+
+		TableResponseCardList res = new TableResponseCardList();
+
 		res.setData(accList);
 		response.setContentType("application/json");
 

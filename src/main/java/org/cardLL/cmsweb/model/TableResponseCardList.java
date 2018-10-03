@@ -1,11 +1,9 @@
 package org.cardLL.cmsweb.model;
 
 import java.util.List;
-
-import org.cardLL.cmsweb.entity.ChargeAccount;
-
-public class TableResponse {
-	List<ChargeAccount> data;
+import org.cardLL.cmsweb.entity.CardProcess;
+public class TableResponseCardList {
+	List<CardProcess> data;
 
 	long totalAmount;
 	long totalCharged;
@@ -13,11 +11,13 @@ public class TableResponse {
 	
 	
 	
-	public List<ChargeAccount> getData() {
+	
+
+	public List<CardProcess> getData() {
 		return data;
 	}
 
-	public void setData(List<ChargeAccount> data) {
+	public void setData(List<CardProcess> data) {
 		this.data = data;
 	}
 

@@ -94,6 +94,29 @@ public class MainController {
 		return "userInfoPage";
 	}
 
+	
+	@RequestMapping(value = "/providerPage", method = RequestMethod.GET)
+	public String providerPage(Model model, Principal principal) {
+
+		// Sau khi user login thanh cong se co principal
+		String userName = principal.getName();
+		User user = userService.findUserByUserName(userName);
+
+		List<CardProcess> accList = cardProcessService.getChargeListByUserAdded(user.getUsername());
+		long totalleft = 0;
+		long countnotCharged = 0;
+
+		model.addAttribute("AccountList", accList);
+		model.addAttribute("username", userName);
+		model.addAttribute("balance", user.getBalance());
+		model.addAttribute("uploadedacc", accList.size());
+		model.addAttribute("countnotCharged", countnotCharged);
+		model.addAttribute("totalleft", totalleft);
+		model.addAttribute("uploadresult", "");
+
+		return "providerPage";
+	}
+	
 	@RequestMapping(value = "/getCardLists", method = RequestMethod.GET)
 	public String getCardlists(Model model, Principal principal) {
 
