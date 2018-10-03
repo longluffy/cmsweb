@@ -282,7 +282,7 @@
 
 							editorSmas = new $.fn.dataTable.Editor(
 									{
-										ajax : "${pageContext.request.contextPath}/addSMASAccount ",
+										ajax : "${pageContext.request.contextPath}/addSMASAccount",
 										table : "#example",
 										idSrc : 'id',
 										fields : [ {
@@ -304,6 +304,20 @@
 										editor.inline(this);
 									});
 
+							
+						
+							editorSmas.on('submitError', function(e, xhr, err,
+														thrown, data) {
+													console.log("error = "+err);
+													console.log("data =" + data);
+													console.log(e);
+													console.log("responseText =" + xhr.responseText);
+													this.error(xhr.responseText);
+													
+
+												});
+							
+
 							//validate
 							editor
 									.on(
@@ -324,17 +338,17 @@
 													}
 
 													var amount = this
-													.field('amount');
+															.field('amount');
 
 													if (!amount.isMultiValue()) {
 														if (!amount.val()) {
 															amount
 																	.error('bạn phải nhập số tiền ');
 														}
-// 														if (amount % 50000 != 0) {
-// 																amount
-// 																	.error('bạn phải nhập số tiền là bội số của 50.000'+ (amount % 50000));
-// 														}
+														// 														if (amount % 50000 != 0) {
+														// 																amount
+														// 																	.error('bạn phải nhập số tiền là bội số của 50.000'+ (amount % 50000));
+														// 														}
 
 														if (phone.val().length >= 14) {
 															phone
@@ -351,11 +365,11 @@
 												}
 											});
 							//log
-							editor.on('error', function(e, json, data) {
-							    table.cells('#' + data.DT_RowId, '').every(function() {
-							      $(this.node()).attr('title', this.data());
-							    })
-							});
+							// 							editor.on('error', function(e, json, data) {
+							// 							    table.cells('#' + data.DT_RowId, '').every(function() {
+							// 							      $(this.node()).attr('title', this.data());
+							// 							    })
+							// 							});
 							$('#example')
 									.DataTable(
 											{

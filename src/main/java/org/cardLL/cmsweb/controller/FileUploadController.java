@@ -362,32 +362,40 @@ public class FileUploadController {
 			case "amount":
 				acc.setAmount(BigInteger.valueOf(Long.valueOf(request.getParameter(key))));
 				break;
-
-			case "date":
-//				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-				String datestr = request.getParameter(key);
-
-				java.sql.Date date = null;
-				date = java.sql.Date.valueOf(datestr);
-				acc.setDate(date);
+			case "password":
+				acc.setPassword(request.getParameter(key));
 				break;
 			default:
 				break;
 			}
 		}
 
+		
+		
 		if ("create".equalsIgnoreCase(action)) {
 			// create new charge account
+			Calendar currenttime = Calendar.getInstance();
+			Date sqldate = new Date((currenttime.getTime()).getTime());
+			acc.setDate(sqldate);
+			acc.setAccounttype(4);
 			acc = chargeAccountServices.createChargeAccount(acc);
+		
 		} else {
 			// update old account
-			acc.setId(Integer.valueOf(id));
-			acc = chargeAccountServices.updateChargeAccount(acc);
+			ChargeAccount exist = chargeAccountServices.getChargeAccountById(Integer.valueOf(id));
 
+			if (exist.getChargedamount().compareTo(acc.getAmount()) < 0) {
+				response.sendError(422, "invalid_amount");
+			} else {
+				exist.setAmount(acc.getAmount());
+				acc = chargeAccountServices.updateChargeAccount(exist);
+
+			}
 		}
-
+		
 		List<ChargeAccount> accList = new ArrayList<ChargeAccount>();
 		accList.add(acc);
+
 
 		TableResponseChargeAcc res = new TableResponseChargeAcc();
 		res.setData(accList);

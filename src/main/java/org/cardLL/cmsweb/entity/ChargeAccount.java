@@ -25,6 +25,16 @@ public class ChargeAccount {
 	BigInteger chargedamount;
 	BigInteger leftamount;
 	int completed;
+	String password;
+	
+	
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
 	public int getId() {
 		return id;
