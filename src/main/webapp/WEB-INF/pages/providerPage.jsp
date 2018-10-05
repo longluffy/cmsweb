@@ -63,47 +63,53 @@
 							Info</span>
 					</p>
 					<h1 class="mb-3 bread"
-						data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">${username}</h1>
+						data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Xin chào ${username}</h1>
 					<div class="row justify-content-center ftco-section ftco-counter"
 						id="section-counter">
 						<div class="col-md-12">
 							<div class="row">
 								<div
-									class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
+									class="col-md-4 d-flex justify-content-center counter-wrap ftco-animate">
 									<div class="block-18 text-center">
 										<div class="text">
-											<strong class="number" data-number="${balance}">0</strong> <span>Số
-												dư tài khoản</span>
+											<strong class="number"> Thẻ đã gửi : </strong>
+											<strong class="number" data-number="${totalCard}"></strong> <span></span>
+											<strong class="number" data-number="${totalValue}"></strong>
+											<strong class="number"> VNĐ </strong>
 										</div>
 									</div>
 								</div>
+								
 								<div
-									class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
+									class="col-md-4 d-flex justify-content-center counter-wrap ftco-animate">
 									<div class="block-18 text-center">
 										<div class="text">
-											<strong class="number" data-number="${uploadedacc}">0</strong>
-											<span>Tài khoản đã up</span>
+											<strong class="number">Thẻ lỗi : </strong>
+										
+											<strong class="number" data-number="${totalCardFailed}">0</strong>
+											<span></span>
+											<strong class="number" data-number="${totalValueFailed}">0</strong>
+									
+											<strong class="number"> VNĐ </strong>
 										</div>
 									</div>
 								</div>
+								
 								<div
-									class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
+									class="col-md-4 d-flex justify-content-center counter-wrap ftco-animate">
 									<div class="block-18 text-center">
 										<div class="text">
-											<strong class="number" data-number="${countnotCharged}">0</strong>
-											<span>Tài khoản chưa nạp</span>
+											<strong class="number">THÀNH CÔNG : </strong>
+										
+											<strong class="number" data-number="${totalCardSuccess}">0</strong>
+											<span></span>
+											<strong class="number" data-number="${totalValueSuccess}">0</strong>
+											<strong class="number"> VNĐ </strong>
 										</div>
 									</div>
 								</div>
-								<div
-									class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
-									<div class="block-18 text-center">
-										<div class="text">
-											<strong class="number" data-number="${totalleft}">0</strong>
-											<span>Giá trị chưa nạp</span>
-										</div>
-									</div>
-								</div>
+								
+								
 							</div>
 						</div>
 					</div>
@@ -125,83 +131,77 @@
 			<div class="row">
 				<div class="col-md-12 ftco-animate">
 					<div class="table-responsive">
-						<!-- 						<table class="table"> -->
-						<!-- 							<thead class="thead-primary"> -->
-						<!-- 								<tr> -->
-						<!-- 									<th>ID</th> -->
-						<!-- 									<th>Tài khoản</th> -->
-						<!-- 									<th>Ngày thêm</th> -->
-						<!-- 									<th>Lượng tiền yêu cầu nạp</th> -->
-						<!-- 									<th>Đã nạp</th> -->
-						<!-- 									<th>Còn lại</th> -->
-						<!-- 																		<th>edit</th> -->
-						<!-- 								</tr> -->
-						<!-- 							</thead> -->
-						<!-- 							<tbody> -->
-						<%-- 								<c:forEach items="${AccountList}" var="account"> --%>
-						<!-- 									<tr> -->
-						<%-- 										<td>${account.id}</td> --%>
-						<!-- 										<td><a -->
-						<%-- 											href="${pageContext.request.contextPath}/chargedetail_${account.id}"> --%>
-						<%-- 												${account.phonenumber}</a></td> --%>
-						<%-- 										<td>${account.date}</td> --%>
-						<%-- 										<td>${account.amount}</td> --%>
-						<%-- 										<td>${account.chargedamount}</td> --%>
-						<%-- 										<td>${account.leftamount}</td> --%>
-						<%-- 																				<td><a href="<c:url value='/edit/${account.id}' />">Edit</a></td> --%>
-						<!-- 									</tr> -->
-						<%-- 								</c:forEach> --%>
-						<!-- 							</tbody> -->
-						<!-- 						</table> -->
-
 						<table cellpadding="1" cellspacing="0" border="0" style="width: 67%; margin: 0 auto 2em auto;">
 					        <thead>
 					            <tr>
 					                <th>Lọc bảng theo</th>
 					            </tr>
 					        </thead>
-					        <tbody>
-					            <tr id="filter_col1" data-column="0">
-					                <td>Tìm ID</td>
-					                <td align="center"><input type="text" class="column_filter" id="col0_filter"></td>
-					                
-					            </tr>
-					            <tr id="filter_col2" data-column="1">
-					                <td>Serial</td>
-					                <td align="center"><input type="text" class="column_filter" id="col1_filter"></td>
-					                
-					            </tr>
-					            <tr id="filter_col3" data-column="2">
-					                <td>Pin</td>
-					                <td align="center"><input type="text" class="column_filter" id="col2_filter"></td>
-					            
-					            </tr>
-					            <tr id="filter_col4" data-column="3">
-					                <td>Thời gian</td>
-					                <td align="center"><input type="text" class="column_filter" id="col3_filter"></td>
-					               
-					            </tr>
-					            <tr id="filter_col5" data-column="4">
-					                <td>Thẻ hợp lệ</td>
-					                <td align="center"><input type="text" class="column_filter" id="col4_filter"></td>
-					                
-					            </tr>
-					            <tr id="filter_col6" data-column="5">
-					                <td>Giá trị thẻ</td>
-					                <td align="center"><input type="text" class="column_filter" id="col5_filter"></td>
-				               	</tr>
-					             <tr id="filter_col7" data-column="6">
-					                <td>Kết quả nạp</td>
-					                <td align="center"><input type="text" class="column_filter" id="col6_filter"></td>
-					                
-					            </tr>
-					             <tr id="filter_col8" data-column="7">
-					                <td>Nội dung</td>
-					                <td align="center"><input type="text" class="column_filter" id="col7_filter"></td>
-					                
-					            </tr>
-					        </tbody>
-					    </table>
+							<tbody>
+								<tr>
+									<td>
+									<table cellpadding="1" cellspacing="0" border="0" style="width: 67%; margin: 0 auto 2em auto;">
+										<tbody>
+									
+										<tr id="filter_col1" data-column="0">
+											<td>Tìm ID</td>
+											<td align="center"><input type="text"
+												class="column_filter" id="col0_filter"></td>
+		
+										</tr>
+										<tr id="filter_col2" data-column="1">
+											<td>Serial</td>
+											<td align="center"><input type="text"
+												class="column_filter" id="col1_filter"></td>
+		
+										</tr>
+										<tr id="filter_col3" data-column="2">
+											<td>Pin</td>
+											<td align="center"><input type="text"
+												class="column_filter" id="col2_filter"></td>
+		
+										</tr>
+										<tr id="filter_col4" data-column="3">
+											<td>Thời gian</td>
+											<td align="center"><input type="text"
+												class="column_filter" id="col3_filter"></td>
+		
+										</tr>
+										</tbody>
+									</table>
+								</td>
+								<td>
+								<table cellpadding="1" cellspacing="1" border="0" style="width: 67%; margin: 0 auto 2em auto;">
+									<tbody>
+											<tr id="filter_col5" data-column="4">
+												<td>Thẻ hợp lệ</td>
+												<td align="center"><input type="text"
+													class="column_filter" id="col4_filter"></td>
+			
+											</tr>
+											<tr id="filter_col6" data-column="5">
+												<td>Giá trị thẻ</td>
+												<td align="center"><input type="text"
+													class="column_filter" id="col5_filter"></td>
+											</tr>
+											<tr id="filter_col7" data-column="6">
+												<td>Kết quả nạp</td>
+												<td align="center"><input type="text"
+													class="column_filter" id="col6_filter"></td>
+			
+											</tr>
+											<tr id="filter_col8" data-column="7">
+												<td>Nội dung</td>
+												<td align="center"><input type="text"
+													class="column_filter" id="col7_filter"></td>
+			
+											</tr>
+										</tbody>
+									</table>
+								</td>
+								</tr>
+							</tbody>
+						</table>
 						<table id="example" class="display" width="100%" cellspacing="0">
 							<thead>
 								<tr>
@@ -291,9 +291,8 @@
 		src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
 <script
 		src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-
-
-
+	
+<script src="https://cdn.datatables.net/plug-ins/1.10.12/sorting/datetime-moment.js"></script>
 
 
 
@@ -352,7 +351,9 @@
 					name : "cardprocessresult"
 				} ]
 			});
-
+			
+		    $.fn.dataTable.moment('DD-MM-YYYY HH:mm:ss');
+		    
 			$('#example').DataTable({
 				dom : "Bfrtip",
 				ajax : "${pageContext.request.contextPath}/getCardListByProvider",
@@ -366,7 +367,14 @@
 				}, {
 					data : "receivetime",
 					type : "datetime",
-					format:"YYYY-MM-DD hh:mm"
+
+					 render: function(data, type, row){
+			                if(type === "sort" || type === "type"){
+			                    return data;
+			                }
+			                return moment(data).format("DD-MM-YYYY HH:mm:ss");
+			            }
+
 				}, {
 					data : "cardavailable",
 				  	render: function ( data, type, row ) {
@@ -375,16 +383,26 @@
 										
 				}, {
 					data : "cardvalue",
-					render : $.fn.dataTable.render.number(',', '.', 0, 'VNĐ ')
+					render :function ( data, type, row ) {
+				        return !data?"":data;
+				    }
+						
 				}, {
 					data : "cardprocesssuccess",
 					render: function ( data, type, row ) {
-				        return data=="1"?"Thành công":"Thất bại";
+						if(!data){
+							return "Thất bại";
+						}else if (data==1) {
+							return "Thành công";
+						}else if(data==2){
+							return "Đang xử lý";
+						}else {
+							return "Thất bại";
+						}
 				    }
 				}, {
 					data : "cardprocessresult",
 					render: function ( data, type, row ) {
-		
 				        return row.cardavailable==0?row.cardcheckresult:(!data?"":data);
 				    }
 				} ],

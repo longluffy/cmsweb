@@ -248,7 +248,7 @@
 				<version>2.2</version>
 				<!-- Config: contextPath and Port (Default - /SpringMVCHibernateSecurity 
 					: 8080) -->
-				<!-- <configuration> <path>/</path> <port>8899</port> </configuration> -->
+				<configuration> <path>/</path> <port>8899</port> </configuration>
 			</plugin>
 		</plugins>
 	</build>

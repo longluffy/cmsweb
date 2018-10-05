@@ -1,10 +1,12 @@
 package org.cardLL.cmsweb.dao;
 
+import java.lang.reflect.Field;
 import java.util.List;
 
 import org.cardLL.cmsweb.config.ApplicationContextConfig;
 import org.cardLL.cmsweb.entity.User;
 import org.cardLL.cmsweb.entity.UserRole;
+import org.cardLL.cmsweb.entity.sumInfoObj;
 import org.cardLL.cmsweb.entity.CardProcess;
 import org.cardLL.cmsweb.entity.ChargeAccount;
 import org.cardLL.cmsweb.model.UserInfo;
@@ -82,4 +84,72 @@ public class CardProcessDAO {
 		return null;
 	}
 
+	public sumInfoObj getStatisticAll(String userName) {
+		Session session = sessionFactory.getCurrentSession();
+
+		String sqltotal = "select SUM(cardvalue)  as total from CardProcess a where a.user_added=:provider";
+		Query sumSalaryQuery = session.createQuery(sqltotal);
+		sumSalaryQuery.setParameter("provider", userName);
+		Object sumSalary = sumSalaryQuery.uniqueResult();
+		long totalStr= Long.parseLong(sumSalary.toString());
+
+
+		String sqlcount = "select count(cardvalue)  as total from CardProcess a where a.user_added=:provider";
+		sumSalaryQuery = session.createQuery(sqlcount);
+		sumSalaryQuery.setParameter("provider", userName);
+		sumSalary = sumSalaryQuery.uniqueResult();
+		long countstr= Long.parseLong(sumSalary.toString());
+
+		
+		sumInfoObj res = new sumInfoObj();
+		res.setTotal(totalStr);
+		res.setCount(countstr);
+		return res;
+	}
+
+	public sumInfoObj getStatisticSuccess(String username) {
+		Session session = sessionFactory.getCurrentSession();
+
+		String sqltotal = "select SUM(cardvalue)  as total from CardProcess a where a.user_added=:provider and a.cardavailable=0";
+		Query sumSalaryQuery = session.createQuery(sqltotal);
+		sumSalaryQuery.setParameter("provider", username);
+		Object sumSalary = sumSalaryQuery.uniqueResult();
+		long totalStr= Long.parseLong(sumSalary.toString());
+
+
+		String sqlcount = "select count(cardvalue)  as total from CardProcess a where a.user_added=:provider and a.cardavailable=0";
+		sumSalaryQuery = session.createQuery(sqlcount);
+		sumSalaryQuery.setParameter("provider", username);
+		sumSalary = sumSalaryQuery.uniqueResult();
+		long countstr= Long.parseLong(sumSalary.toString());
+
+		
+		sumInfoObj res = new sumInfoObj();
+		res.setTotal(totalStr);
+		res.setCount(countstr);
+		return res;
+	}
+
+	public sumInfoObj getStatisticFailed(String username) {
+		Session session = sessionFactory.getCurrentSession();
+
+		String sqltotal = "select SUM(cardvalue)  as total from CardProcess a where a.user_added=:provider and a.cardprocesssuccess=1";
+		Query sumSalaryQuery = session.createQuery(sqltotal);
+		sumSalaryQuery.setParameter("provider", username);
+		Object sumSalary = sumSalaryQuery.uniqueResult();
+		long totalStr= Long.parseLong(sumSalary.toString());
+
+
+		String sqlcount = "select count(cardvalue)  as total from CardProcess a where a.user_added=:provider and a.cardprocesssuccess=1";
+		sumSalaryQuery = session.createQuery(sqlcount);
+		sumSalaryQuery.setParameter("provider", username);
+		sumSalary = sumSalaryQuery.uniqueResult();
+		long countstr= Long.parseLong(sumSalary.toString());
+
+		
+		sumInfoObj res = new sumInfoObj();
+		res.setTotal(totalStr);
+		res.setCount(countstr);
+		return res;
+	}
 }

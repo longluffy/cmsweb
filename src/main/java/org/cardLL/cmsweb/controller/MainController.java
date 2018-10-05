@@ -1,18 +1,15 @@
 package org.cardLL.cmsweb.controller;
 
-import java.math.BigInteger;
 import java.security.Principal;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.cardLL.cmsweb.authentication.MyUserDetailsService;
 import org.cardLL.cmsweb.entity.CardProcess;
 import org.cardLL.cmsweb.entity.ChargeAccount;
 import org.cardLL.cmsweb.entity.User;
-import org.cardLL.cmsweb.model.UserInfo;
+import org.cardLL.cmsweb.entity.sumInfoObj;
 import org.cardLL.cmsweb.service.CardProcessService;
 import org.cardLL.cmsweb.service.ChargeAccountServices;
 import org.cardLL.cmsweb.service.UserService;
@@ -103,16 +100,19 @@ public class MainController {
 		User user = userService.findUserByUserName(userName);
 
 		List<CardProcess> accList = cardProcessService.getChargeListByUserAdded(user.getUsername());
-		long totalleft = 0;
-		long countnotCharged = 0;
-
+		sumInfoObj cardReceived = cardProcessService.getStatisticAll(user.getUsername());
+		sumInfoObj cardSuccess = cardProcessService.getStatisticSuccess(user.getUsername());
+		sumInfoObj cardFailed = cardProcessService.getStatisticFailed(user.getUsername());
 		model.addAttribute("AccountList", accList);
 		model.addAttribute("username", userName);
 		model.addAttribute("balance", user.getBalance());
 		model.addAttribute("uploadedacc", accList.size());
-		model.addAttribute("countnotCharged", countnotCharged);
-		model.addAttribute("totalleft", totalleft);
-		model.addAttribute("uploadresult", "");
+		model.addAttribute("totalCard", cardReceived.getCount());
+		model.addAttribute("totalValue", cardReceived.getTotal());
+		model.addAttribute("totalCardSuccess", cardSuccess.getCount());
+		model.addAttribute("totalValueSuccess", cardSuccess.getTotal());
+		model.addAttribute("totalCardFailed", cardFailed.getCount());
+		model.addAttribute("totalValueFailed", cardFailed.getTotal());
 
 		return "providerPage";
 	}
